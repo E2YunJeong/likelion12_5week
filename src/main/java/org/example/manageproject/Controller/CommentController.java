@@ -90,7 +90,7 @@ public class CommentController {
 
     // 코멘트 수정
     @PatchMapping("/{id}")
-    public ResponseEntity<CommentDto> updateComment(@PathVariable(name = "id") Long id, @io.swagger.v3.oas.annotations.parameters.RequestBody CommentDto commentDto){
+    public ResponseEntity<CommentDto> updateComment(@PathVariable(name = "id") Long id, @RequestBody CommentDto commentDto){
         try{
             Comment updateComment = commentService.updateComment(id, commentDto);
             return ResponseEntity.ok(CommentDto.from(updateComment));
