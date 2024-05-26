@@ -10,19 +10,24 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class CommentDto {
-    private long id;
-    private Post post;
-    private Member member;
+    private Long id;
+    private Long postId;
+    private Long memberId;
     private String content;
     private LocalDateTime commentDate;
 
     public static CommentDto from(Comment comment){
         CommentDto commentDto = new CommentDto();
         commentDto.setId(comment.getId());
-        commentDto.setPost(comment.getPost());
-        commentDto.setMember(comment.getMember());
         commentDto.setContent(comment.getContent());
         commentDto.setCommentDate(comment.getCommentDate());
+
+        if (comment.getMember() != null){
+            commentDto.setMemberId(comment.getMember().getId());
+        }
+        if (comment.getPost() != null){
+            commentDto.setPostId(comment.getPost().getId());
+        }
 
         return commentDto;
     }

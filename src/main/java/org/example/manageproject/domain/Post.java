@@ -18,7 +18,7 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "post_id")
-    private long id;
+    private Long id;
 
     @ManyToOne //많은 member->하나의 post
     @JoinColumn(name="member_id")

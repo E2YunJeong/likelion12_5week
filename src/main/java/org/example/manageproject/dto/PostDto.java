@@ -10,19 +10,21 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class PostDto {
-    private long id;
-    private Member member;
+    private Long id;
+    private Long memberId;
     private String title;
     private String content;
     private LocalDateTime postdate;
 
     public static PostDto from(Post post){
         PostDto postDto = new PostDto();
-        postDto.setId(postDto.getId());
-        postDto.setMember(postDto.getMember());
-        postDto.setContent(postDto.getContent());
-        postDto.setTitle(postDto.getTitle());
-        postDto.setPostdate(postDto.getPostdate());
+        postDto.setId(post.getId());
+        postDto.setContent(post.getContent());
+        postDto.setTitle(post.getTitle());
+        postDto.setPostdate(post.getPostdate());
+        if(post.getMember()!=null){
+            postDto.setMemberId(post.getMember().getId());
+        }
         return postDto;
     }
 }
