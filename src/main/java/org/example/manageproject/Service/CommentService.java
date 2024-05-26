@@ -40,7 +40,9 @@ public class CommentService {
     }
 
     // 특정 코멘트 조회
-    public Optional<Comment> getCommentById(Long id){return commentRepository.findById(id);}
+    public Optional<Comment> getCommentById(Long id) {
+        return commentRepository.findById(id);
+    }
     /*-------------------------------------------------------------------------*/
 
     // Delete
@@ -56,7 +58,7 @@ public class CommentService {
         if (commentOptional.isPresent()){
             Comment comment = commentOptional.get();
             if (commentDto.getContent() != null){
-                comment.setContent(comment.getContent());
+                comment.setContent(commentDto.getContent());
             }
             return commentRepository.save(comment);
         }
